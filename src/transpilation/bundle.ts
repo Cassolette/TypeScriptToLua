@@ -108,7 +108,7 @@ export function getBundleResult(program: ts.Program, files: ProcessedFile[]): [t
 
     // return require("<entry module path>")
     const args = options.luaTarget === LuaTarget.Lua50 ? "unpack(arg == nil and {} or arg)" : "...";
-    const entryPoint = `return require(${createModulePath(entryModuleFilePath ?? entryModule, program)}, ${args})\n`;
+    const entryPoint = `${options.noReturnMainInBundle ? "return " : ""}require(${createModulePath(entryModuleFilePath ?? entryModule, program)}, ${args})\n`;
 
     const footers: string[] = [];
     if (options.sourceMapTraceback) {
@@ -139,7 +139,7 @@ export function getBundleResult(program: ts.Program, files: ProcessedFile[]): [t
 }
 
 function moduleSourceNode({ code, sourceMapNode }: ProcessedFile, modulePath: string): SourceNode {
-    const tableEntryHead = `[${modulePath}] = function(...) \n`;
+    const tableEntryHead = `[${modulePath}] = function(...)\n`;
     const tableEntryTail = " end,\n";
 
     return joinSourceChunks([tableEntryHead, sourceMapNode ?? code, tableEntryTail]);

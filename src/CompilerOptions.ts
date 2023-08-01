@@ -35,6 +35,7 @@ export interface TypeScriptToLuaOptions {
     noImplicitSelf?: boolean;
     noHeader?: boolean;
     noResolvePaths?: string[];
+    noReturnMainInBundle?: boolean;
     plugins?: Array<ts.PluginImport | TransformerImport>;
     sourceMapTraceback?: boolean;
     tstlVerbose?: boolean;

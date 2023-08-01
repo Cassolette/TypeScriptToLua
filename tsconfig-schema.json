@@ -71,6 +71,11 @@
                     "description": "An array of import paths that should not be resolved but copied verbatim to output lua.",
                     "type": "array"
                 },
+                "noReturnMainInBundle": {
+                    "description": "Specify if bundler should emit top-level return statement.",
+                    "type": "boolean",
+                    "default": false
+                },
                 "sourceMapTraceback": {
                     "description": "Applies the source map to show source TS files and lines in error tracebacks.",
                     "default": false,

@@ -100,6 +100,11 @@ export const optionDeclarations: CommandLineOption[] = [
         type: "boolean",
     },
     {
+        name: "noReturnMainInBundle",
+        description: "Specify if bundler should emit top-level return statement.",
+        type: "boolean",
+    },
+    {
         name: "measurePerformance",
         description: "Measure performance of the tstl compiler.",
         type: "boolean",
